@@ -2,7 +2,7 @@
 # @Author: detailyang
 # @Date:   2016-09-20 21:13:28
 # @Last Modified by:   detailyang
-# @Last Modified time: 2016-09-23 13:55:09
+# @Last Modified time: 2016-09-23 19:36:30
 
 
 import argparse
@@ -41,20 +41,20 @@ def toGif(args, im):
             for x in range(0, w):
                 for y in range(0, h):
                     px = nim.getpixel((x, y))
-                    arts[i].append("%dpx %dpx 0 #%.2x%.2x%.2x" %(int(x*pw), int(y*pw), px[0], px[1], px[2]))
+                    arts[i].append("%dpx %dpx 0 #%.2x%.2x%.2x" % (int(x * pw), int(y * pw), px[0], px[1], px[2]))
 
             im.seek(im.tell() + 1)
             i = i + 1
     except EOFError:
-        pass # end of sequence
+        pass
 
     keyframes = []
 
     for i, art in enumerate(arts):
         keyframes.append({
-            'progress': '%.1f%%' %(100 / len(arts) * i),
+            'progress': '%.1f%%' % (100 / len(arts) * i),
             'frame': ','.join(art)
-            })
+        })
 
     return tpl.render({
         'keyframes': keyframes,
@@ -81,7 +81,7 @@ def toOther(args, im):
         for y in range(0, h):
             # print(w, h)
             px = im.getpixel((x, y))
-            art.append("%dpx %dpx 0 #%.2x%.2x%.2x" %(int(x*width), int(y*width), px[0], px[1], px[2]))
+            art.append("%dpx %dpx 0 #%.2x%.2x%.2x" % (int(x * width), int(y * width), px[0], px[1], px[2]))
 
     return tpl.render({
         'width': str(width),
@@ -99,8 +99,8 @@ def main():
 
     try:
         im = Image.open(args.filename)
-    except IOError as e:
-        print("cannot open the file %s" %args.filename)
+    except IOError:
+        print("cannot open the file %s" % args.filename)
 
         sys.exit(1)
 
