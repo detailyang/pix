@@ -25,6 +25,9 @@ setup(
             'pix=pix:main',
         ],
     },
+    data_files=[
+        ('tpl', ['pix/tpl/dynamic.tpl', 'pix/tpl/static.tpl']),
+    ],
     author='detailyang',
     author_email='detailyang@gmail.com',
 

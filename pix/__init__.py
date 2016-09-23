@@ -2,17 +2,21 @@
 # @Author: detailyang
 # @Date:   2016-09-20 21:13:28
 # @Last Modified by:   detailyang
-# @Last Modified time: 2016-09-23 19:36:30
+# @Last Modified time: 2016-09-23 19:51:42
 
 
 import argparse
 import sys
+from os import path
 from PIL import Image
 from jinja2 import Template
 
 
+dir = path.dirname(path.abspath(__file__))
+
+
 def toGif(args, im):
-    with open('./tpl/dynamic.tpl') as f:
+    with open(path.join(dir, '../tpl/dynamic.tpl')) as f:
         tpl = Template(f.read())
 
     palette = im.getpalette()
@@ -64,7 +68,7 @@ def toGif(args, im):
 
 
 def toOther(args, im):
-    with open('./tpl/static.tpl') as f:
+    with open(path.join(dir, '../tpl/static.tpl')) as f:
         tpl = Template(f.read())
 
     scale = args.scale
