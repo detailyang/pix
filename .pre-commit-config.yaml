@@ -1,0 +1,8 @@
+-   repo: git@github.com:pre-commit/pre-commit-hooks
+    sha: v0.5.1
+    hooks:
+    -   id: flake8
+        exclude: migrations
+        args: ['--ignore=F403, F812', '--max-line-length=120']
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
