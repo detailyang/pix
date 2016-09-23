@@ -23,6 +23,7 @@ Contributing
 ------------
 
 To contribute to pix, clone this repo locally and commit your code on a separate branch.
+
 PS: PR Welcome :rocket: :rocket: :rocket: :rocket:
 
 
