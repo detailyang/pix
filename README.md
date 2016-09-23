@@ -8,7 +8,7 @@ Using the box-shadow you can render any image:)
 #Install
 
 ````bash
-pip install pix
+pip install pix-css
 ````
 
 #Usage
