@@ -2,7 +2,7 @@
 # @Author: detailyang
 # @Date:   2016-09-20 21:13:28
 # @Last Modified by:   detailyang
-# @Last Modified time: 2016-09-23 19:51:42
+# @Last Modified time: 2016-09-23 20:26:57
 
 
 import argparse
@@ -12,13 +12,54 @@ from PIL import Image
 from jinja2 import Template
 
 
+dtpl = '''
+<style>
+body {
+    margin: 0px;
+}
+.art {
+    position: relative;
+    width: {{ width }}px;
+    height: {{ width }}px;
+    animation: {{duration}}s art steps(1) infinite;
+}
+
+@keyframes art {
+   {% for k in keyframes %}
+        {{k.progress}} {
+            box-shadow: {{k.frame}};
+        }
+   {% endfor %}
+}
+</style>
+
+<div class="art"></div>
+'''
+
+stpl = '''
+<style>
+body {
+    margin: 0px;
+}
+.art {
+    position: relative;
+    width: {{ width }}px;
+    height: {{ width }}px;
+}
+
+div {
+    box-shadow: {{ art }};
+}
+</style>
+
+<div class="art"></div>
+'''
+
 dir = path.dirname(path.abspath(__file__))
 
 
 def toGif(args, im):
-    with open(path.join(dir, '../tpl/dynamic.tpl')) as f:
-        tpl = Template(f.read())
-
+    tpl = Template(dtpl)
     palette = im.getpalette()
 
     try:
@@ -68,9 +109,7 @@ def toGif(args, im):
 
 
 def toOther(args, im):
-    with open(path.join(dir, '../tpl/static.tpl')) as f:
-        tpl = Template(f.read())
-
+    tpl = Template(stpl)
     scale = args.scale
     width = args.width
 

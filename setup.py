@@ -10,7 +10,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='pix',
+    name='pix-css',
     version='0.1.0',
     keywords=('pixel css art'),
     description='transform picture to pixel cs',
@@ -25,9 +25,6 @@ setup(
             'pix=pix:main',
         ],
     },
-    data_files=[
-        ('tpl', ['pix/tpl/dynamic.tpl', 'pix/tpl/static.tpl']),
-    ],
     author='detailyang',
     author_email='detailyang@gmail.com',
 
