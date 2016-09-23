@@ -11,7 +11,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pix-css',
-    version='0.1.0',
+    version='0.1.1',
     keywords=('pixel css art'),
     description='transform picture to pixel cs',
     license='MIT License',
